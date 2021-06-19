@@ -34,10 +34,9 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/TCT_Road_Centrelines_1.js"></script>
-        <script src="data/Taxi_Routes_2.js"></script>
-        <script src="data/MyCiti_Bus_Routes_3.js"></script>
-        <script src="data/MyCiti_Bus_Stops_4.js"></script>
+        <script src="data/Taxi_Routes_1.js"></script>
+        <script src="data/MyCiti_Bus_Routes_2.js"></script>
+        <script src="data/MyCiti_Bus_Stops_3.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -57,7 +56,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[-34.081805822807404,18.055485535304914],[-33.49436350466632,18.984882464693868]]);
+        }).fitBounds([[-34.236629208208264,18.27896881010206],[-33.65025489718377,19.208365739490997]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -90,157 +89,7 @@
         });
         layer_OSMStandard_0;
         map.addLayer(layer_OSMStandard_0);
-        function pop_TCT_Road_Centrelines_1(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (i in e.target._eventParents) {
-                        e.target._eventParents[i].resetStyle(e.target);
-                    }
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ROAD_NAME'] !== null ? autolinker.link(feature.properties['ROAD_NAME'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['SL_RCL_KEY'] !== null ? autolinker.link(feature.properties['SL_RCL_KEY'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['TO_DRCT'] !== null ? autolinker.link(feature.properties['TO_DRCT'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['FROM_DRCT'] !== null ? autolinker.link(feature.properties['FROM_DRCT'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['GID'] !== null ? autolinker.link(feature.properties['GID'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['PROW_CLSF_'] !== null ? autolinker.link(feature.properties['PROW_CLSF_'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['SPD_LMT_SR'] !== null ? autolinker.link(feature.properties['SPD_LMT_SR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['SPD_LMT'] !== null ? autolinker.link(feature.properties['SPD_LMT'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['SURF_TYPE'] !== null ? autolinker.link(feature.properties['SURF_TYPE'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['BEGIN_RD'] !== null ? autolinker.link(feature.properties['BEGIN_RD'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['END_RD'] !== null ? autolinker.link(feature.properties['END_RD'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['RD_WIDTH'] !== null ? autolinker.link(feature.properties['RD_WIDTH'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['NR_LANES'] !== null ? autolinker.link(feature.properties['NR_LANES'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ROAD_TYPE'] !== null ? autolinker.link(feature.properties['ROAD_TYPE'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['SL_RTE_KEY'] !== null ? autolinker.link(feature.properties['SL_RTE_KEY'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ROAD_SEQ'] !== null ? autolinker.link(feature.properties['ROAD_SEQ'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['CONSTR_YEA'] !== null ? autolinker.link(feature.properties['CONSTR_YEA'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ONE_WAY'] !== null ? autolinker.link(feature.properties['ONE_WAY'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['F_ZLEV'] !== null ? autolinker.link(feature.properties['F_ZLEV'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['T_ZLEV'] !== null ? autolinker.link(feature.properties['T_ZLEV'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['PUBLIC_'] !== null ? autolinker.link(feature.properties['PUBLIC_'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['BUS'] !== null ? autolinker.link(feature.properties['BUS'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['BICYCLE'] !== null ? autolinker.link(feature.properties['BICYCLE'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['IRT'] !== null ? autolinker.link(feature.properties['IRT'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['OWNRSHP'] !== null ? autolinker.link(feature.properties['OWNRSHP'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['MNT_AUTH'] !== null ? autolinker.link(feature.properties['MNT_AUTH'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['BGN_RTE_NR'] !== null ? autolinker.link(feature.properties['BGN_RTE_NR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['CMT'] !== null ? autolinker.link(feature.properties['CMT'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['END_RTE_NR'] !== null ? autolinker.link(feature.properties['END_RTE_NR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['PED'] !== null ? autolinker.link(feature.properties['PED'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['RTE_NR'] !== null ? autolinker.link(feature.properties['RTE_NR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['SHAPE_STLe'] !== null ? autolinker.link(feature.properties['SHAPE_STLe'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ShapeSTLen'] !== null ? autolinker.link(feature.properties['ShapeSTLen'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-        }
-
-        function style_TCT_Road_Centrelines_1_0() {
-            return {
-                pane: 'pane_TCT_Road_Centrelines_1',
-                opacity: 1,
-                color: 'rgba(164,113,88,1.0)',
-                dashArray: '',
-                lineCap: 'square',
-                lineJoin: 'bevel',
-                weight: 1.0,
-                fillOpacity: 0,
-                interactive: true,
-            }
-        }
-        map.createPane('pane_TCT_Road_Centrelines_1');
-        map.getPane('pane_TCT_Road_Centrelines_1').style.zIndex = 401;
-        map.getPane('pane_TCT_Road_Centrelines_1').style['mix-blend-mode'] = 'normal';
-        var layer_TCT_Road_Centrelines_1 = new L.geoJson(json_TCT_Road_Centrelines_1, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_TCT_Road_Centrelines_1',
-            layerName: 'layer_TCT_Road_Centrelines_1',
-            pane: 'pane_TCT_Road_Centrelines_1',
-            onEachFeature: pop_TCT_Road_Centrelines_1,
-            style: style_TCT_Road_Centrelines_1_0,
-        });
-        bounds_group.addLayer(layer_TCT_Road_Centrelines_1);
-        map.addLayer(layer_TCT_Road_Centrelines_1);
-        function pop_Taxi_Routes_2(feature, layer) {
+        function pop_Taxi_Routes_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -273,9 +122,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Taxi_Routes_2_0() {
+        function style_Taxi_Routes_1_0() {
             return {
-                pane: 'pane_Taxi_Routes_2',
+                pane: 'pane_Taxi_Routes_1',
                 opacity: 1,
                 color: 'rgba(227,26,28,1.0)',
                 dashArray: '',
@@ -286,21 +135,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Taxi_Routes_2');
-        map.getPane('pane_Taxi_Routes_2').style.zIndex = 402;
-        map.getPane('pane_Taxi_Routes_2').style['mix-blend-mode'] = 'normal';
-        var layer_Taxi_Routes_2 = new L.geoJson(json_Taxi_Routes_2, {
+        map.createPane('pane_Taxi_Routes_1');
+        map.getPane('pane_Taxi_Routes_1').style.zIndex = 401;
+        map.getPane('pane_Taxi_Routes_1').style['mix-blend-mode'] = 'normal';
+        var layer_Taxi_Routes_1 = new L.geoJson(json_Taxi_Routes_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Taxi_Routes_2',
-            layerName: 'layer_Taxi_Routes_2',
-            pane: 'pane_Taxi_Routes_2',
-            onEachFeature: pop_Taxi_Routes_2,
-            style: style_Taxi_Routes_2_0,
+            dataVar: 'json_Taxi_Routes_1',
+            layerName: 'layer_Taxi_Routes_1',
+            pane: 'pane_Taxi_Routes_1',
+            onEachFeature: pop_Taxi_Routes_1,
+            style: style_Taxi_Routes_1_0,
         });
-        bounds_group.addLayer(layer_Taxi_Routes_2);
-        map.addLayer(layer_Taxi_Routes_2);
-        function pop_MyCiti_Bus_Routes_3(feature, layer) {
+        bounds_group.addLayer(layer_Taxi_Routes_1);
+        map.addLayer(layer_Taxi_Routes_1);
+        function pop_MyCiti_Bus_Routes_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -342,9 +191,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_MyCiti_Bus_Routes_3_0() {
+        function style_MyCiti_Bus_Routes_2_0() {
             return {
-                pane: 'pane_MyCiti_Bus_Routes_3',
+                pane: 'pane_MyCiti_Bus_Routes_2',
                 opacity: 1,
                 color: 'rgba(255,255,0,1.0)',
                 dashArray: '',
@@ -355,21 +204,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_MyCiti_Bus_Routes_3');
-        map.getPane('pane_MyCiti_Bus_Routes_3').style.zIndex = 403;
-        map.getPane('pane_MyCiti_Bus_Routes_3').style['mix-blend-mode'] = 'normal';
-        var layer_MyCiti_Bus_Routes_3 = new L.geoJson(json_MyCiti_Bus_Routes_3, {
+        map.createPane('pane_MyCiti_Bus_Routes_2');
+        map.getPane('pane_MyCiti_Bus_Routes_2').style.zIndex = 402;
+        map.getPane('pane_MyCiti_Bus_Routes_2').style['mix-blend-mode'] = 'normal';
+        var layer_MyCiti_Bus_Routes_2 = new L.geoJson(json_MyCiti_Bus_Routes_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_MyCiti_Bus_Routes_3',
-            layerName: 'layer_MyCiti_Bus_Routes_3',
-            pane: 'pane_MyCiti_Bus_Routes_3',
-            onEachFeature: pop_MyCiti_Bus_Routes_3,
-            style: style_MyCiti_Bus_Routes_3_0,
+            dataVar: 'json_MyCiti_Bus_Routes_2',
+            layerName: 'layer_MyCiti_Bus_Routes_2',
+            pane: 'pane_MyCiti_Bus_Routes_2',
+            onEachFeature: pop_MyCiti_Bus_Routes_2,
+            style: style_MyCiti_Bus_Routes_2_0,
         });
-        bounds_group.addLayer(layer_MyCiti_Bus_Routes_3);
-        map.addLayer(layer_MyCiti_Bus_Routes_3);
-        function pop_MyCiti_Bus_Stops_4(feature, layer) {
+        bounds_group.addLayer(layer_MyCiti_Bus_Routes_2);
+        map.addLayer(layer_MyCiti_Bus_Routes_2);
+        function pop_MyCiti_Bus_Stops_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -423,9 +272,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_MyCiti_Bus_Stops_4_0() {
+        function style_MyCiti_Bus_Stops_3_0() {
             return {
-                pane: 'pane_MyCiti_Bus_Stops_4',
+                pane: 'pane_MyCiti_Bus_Stops_3',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -439,26 +288,26 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_MyCiti_Bus_Stops_4');
-        map.getPane('pane_MyCiti_Bus_Stops_4').style.zIndex = 404;
-        map.getPane('pane_MyCiti_Bus_Stops_4').style['mix-blend-mode'] = 'normal';
-        var layer_MyCiti_Bus_Stops_4 = new L.geoJson(json_MyCiti_Bus_Stops_4, {
+        map.createPane('pane_MyCiti_Bus_Stops_3');
+        map.getPane('pane_MyCiti_Bus_Stops_3').style.zIndex = 403;
+        map.getPane('pane_MyCiti_Bus_Stops_3').style['mix-blend-mode'] = 'normal';
+        var layer_MyCiti_Bus_Stops_3 = new L.geoJson(json_MyCiti_Bus_Stops_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_MyCiti_Bus_Stops_4',
-            layerName: 'layer_MyCiti_Bus_Stops_4',
-            pane: 'pane_MyCiti_Bus_Stops_4',
-            onEachFeature: pop_MyCiti_Bus_Stops_4,
+            dataVar: 'json_MyCiti_Bus_Stops_3',
+            layerName: 'layer_MyCiti_Bus_Stops_3',
+            pane: 'pane_MyCiti_Bus_Stops_3',
+            onEachFeature: pop_MyCiti_Bus_Stops_3,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_MyCiti_Bus_Stops_4_0(feature));
+                return L.circleMarker(latlng, style_MyCiti_Bus_Stops_3_0(feature));
             },
         });
-        bounds_group.addLayer(layer_MyCiti_Bus_Stops_4);
-        map.addLayer(layer_MyCiti_Bus_Stops_4);
+        bounds_group.addLayer(layer_MyCiti_Bus_Stops_3);
+        map.addLayer(layer_MyCiti_Bus_Stops_3);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -470,7 +319,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/MyCiti_Bus_Stops_4.png" /> MyCiti_Bus_Stops': layer_MyCiti_Bus_Stops_4,'<img src="legend/MyCiti_Bus_Routes_3.png" /> MyCiti_Bus_Routes': layer_MyCiti_Bus_Routes_3,'<img src="legend/Taxi_Routes_2.png" /> Taxi_Routes': layer_Taxi_Routes_2,'<img src="legend/TCT_Road_Centrelines_1.png" /> TCT_Road_Centrelines': layer_TCT_Road_Centrelines_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/MyCiti_Bus_Stops_3.png" /> MyCiti_Bus_Stops': layer_MyCiti_Bus_Stops_3,'<img src="legend/MyCiti_Bus_Routes_2.png" /> MyCiti_Bus_Routes': layer_MyCiti_Bus_Routes_2,'<img src="legend/Taxi_Routes_1.png" /> Taxi_Routes': layer_Taxi_Routes_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
         setBounds();
         </script>
     </body>
